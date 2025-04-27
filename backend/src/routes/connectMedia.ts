@@ -11,12 +11,20 @@ connectMedia.post("/connect-media", validator(collectionSchema), async (req: exp
     //@ts-ignore
    const { id } = req.user;
    try {
-        const response = await prisma.connection.create({
-            data: {
-                accessToken: req.body.access_token,
-                expiresIn: req.body.expires_in,
-                mediaName: req.body.mediaName,
-                userId: id
+        const response = await prisma.connection.upsert({
+            where: { userId_mediaName: {
+             mediaName: req.body.mediaName,
+             userId: id
+            }},
+            create: {
+             accessToken: req.body.access_token,
+             expiresIn: req.body.expires_in,
+             mediaName: req.body.mediaName,
+             userId: id
+            },
+            update: {
+             accessToken: req.body.access_token,
+             expiresIn: req.body.expires_in,
             }
         });
 
@@ -24,5 +32,26 @@ connectMedia.post("/connect-media", validator(collectionSchema), async (req: exp
     } catch (e) {
         console.log(e);
         sendResponse(res, 500, "error while creating connection");
+    }
+});
+
+connectMedia.delete("/connect-media", async (req: express.Request, res: express.Response) => {
+    const { id } = req.body;
+
+    if (!id) {
+        sendResponse(res, 400, "Missing body");
+        return;
+    }
+
+    try {
+        const response = await prisma.connection.delete({
+            where: { id: parseInt(id) }
+        });
+
+        sendResponse(res, 200, "success");
+
+    } catch (e) {
+        console.log(e);
+        sendResponse(res, 500, "error while deleting connections")
     }
 })

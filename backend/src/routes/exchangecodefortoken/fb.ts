@@ -3,10 +3,12 @@ import { sendResponse } from "../../utils/helper";
 import dotenv from "dotenv";
 
 export const fb = Router();
-dotenv.config({ path: "../../.env" });
+dotenv.config({ path: "../.env" });
 
 const clientId = process.env.FB_CLIENT;
 const clientSecret = process.env.FB_SECRET;
+
+console.log(clientId)
 
 fb.post("/exchangecodefortoken", async (req: express.Request, res: express.Response) => {
     const { token } = req.body; // Keep it secret, backend ideally!

@@ -3390,6 +3390,7 @@ export namespace Prisma {
 
   export type ConnectionWhereUniqueInput = Prisma.AtLeast<{
     id?: number
+    userId_mediaName?: ConnectionUserIdMediaNameCompoundUniqueInput
     AND?: ConnectionWhereInput | ConnectionWhereInput[]
     OR?: ConnectionWhereInput[]
     NOT?: ConnectionWhereInput | ConnectionWhereInput[]
@@ -3398,7 +3399,7 @@ export namespace Prisma {
     expiresIn?: IntFilter<"Connection"> | number
     userId?: IntFilter<"Connection"> | number
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
-  }, "id">
+  }, "id" | "userId_mediaName">
 
   export type ConnectionOrderByWithAggregationInput = {
     id?: SortOrder
@@ -3665,6 +3666,11 @@ export namespace Prisma {
   export type UserScalarRelationFilter = {
     is?: UserWhereInput
     isNot?: UserWhereInput
+  }
+
+  export type ConnectionUserIdMediaNameCompoundUniqueInput = {
+    userId: number
+    mediaName: string
   }
 
   export type ConnectionCountOrderByAggregateInput = {

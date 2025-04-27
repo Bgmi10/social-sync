@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { baseUrl } from "../../utils/constants";
 import { useNavigate } from "react-router-dom";
-import { Facebook, Loader2, RefreshCw } from 'lucide-react';
+import { Facebook, Loader2 } from 'lucide-react';
 import { fbLogin } from "../../services/fbLogin";
 
 interface Connection {
