@@ -2123,6 +2123,7 @@ export namespace Prisma {
     mediaName: string | null
     accessToken: string | null
     expiresIn: number | null
+    refreshToken: string | null
     userId: number | null
   }
 
@@ -2131,6 +2132,7 @@ export namespace Prisma {
     mediaName: string | null
     accessToken: string | null
     expiresIn: number | null
+    refreshToken: string | null
     userId: number | null
   }
 
@@ -2139,6 +2141,7 @@ export namespace Prisma {
     mediaName: number
     accessToken: number
     expiresIn: number
+    refreshToken: number
     userId: number
     _all: number
   }
@@ -2161,6 +2164,7 @@ export namespace Prisma {
     mediaName?: true
     accessToken?: true
     expiresIn?: true
+    refreshToken?: true
     userId?: true
   }
 
@@ -2169,6 +2173,7 @@ export namespace Prisma {
     mediaName?: true
     accessToken?: true
     expiresIn?: true
+    refreshToken?: true
     userId?: true
   }
 
@@ -2177,6 +2182,7 @@ export namespace Prisma {
     mediaName?: true
     accessToken?: true
     expiresIn?: true
+    refreshToken?: true
     userId?: true
     _all?: true
   }
@@ -2272,6 +2278,7 @@ export namespace Prisma {
     mediaName: string
     accessToken: string
     expiresIn: number
+    refreshToken: string | null
     userId: number
     _count: ConnectionCountAggregateOutputType | null
     _avg: ConnectionAvgAggregateOutputType | null
@@ -2299,6 +2306,7 @@ export namespace Prisma {
     mediaName?: boolean
     accessToken?: boolean
     expiresIn?: boolean
+    refreshToken?: boolean
     userId?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["connection"]>
@@ -2308,6 +2316,7 @@ export namespace Prisma {
     mediaName?: boolean
     accessToken?: boolean
     expiresIn?: boolean
+    refreshToken?: boolean
     userId?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["connection"]>
@@ -2317,6 +2326,7 @@ export namespace Prisma {
     mediaName?: boolean
     accessToken?: boolean
     expiresIn?: boolean
+    refreshToken?: boolean
     userId?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["connection"]>
@@ -2326,10 +2336,11 @@ export namespace Prisma {
     mediaName?: boolean
     accessToken?: boolean
     expiresIn?: boolean
+    refreshToken?: boolean
     userId?: boolean
   }
 
-  export type ConnectionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "mediaName" | "accessToken" | "expiresIn" | "userId", ExtArgs["result"]["connection"]>
+  export type ConnectionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "mediaName" | "accessToken" | "expiresIn" | "refreshToken" | "userId", ExtArgs["result"]["connection"]>
   export type ConnectionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
@@ -2350,6 +2361,7 @@ export namespace Prisma {
       mediaName: string
       accessToken: string
       expiresIn: number
+      refreshToken: string | null
       userId: number
     }, ExtArgs["result"]["connection"]>
     composites: {}
@@ -2779,6 +2791,7 @@ export namespace Prisma {
     readonly mediaName: FieldRef<"Connection", 'String'>
     readonly accessToken: FieldRef<"Connection", 'String'>
     readonly expiresIn: FieldRef<"Connection", 'Int'>
+    readonly refreshToken: FieldRef<"Connection", 'String'>
     readonly userId: FieldRef<"Connection", 'Int'>
   }
     
@@ -3224,6 +3237,7 @@ export namespace Prisma {
     mediaName: 'mediaName',
     accessToken: 'accessToken',
     expiresIn: 'expiresIn',
+    refreshToken: 'refreshToken',
     userId: 'userId'
   };
 
@@ -3244,6 +3258,14 @@ export namespace Prisma {
   };
 
   export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
+
+
+  export const NullsOrder: {
+    first: 'first',
+    last: 'last'
+  };
+
+  export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
 
   /**
@@ -3375,6 +3397,7 @@ export namespace Prisma {
     mediaName?: StringFilter<"Connection"> | string
     accessToken?: StringFilter<"Connection"> | string
     expiresIn?: IntFilter<"Connection"> | number
+    refreshToken?: StringNullableFilter<"Connection"> | string | null
     userId?: IntFilter<"Connection"> | number
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
@@ -3384,6 +3407,7 @@ export namespace Prisma {
     mediaName?: SortOrder
     accessToken?: SortOrder
     expiresIn?: SortOrder
+    refreshToken?: SortOrderInput | SortOrder
     userId?: SortOrder
     user?: UserOrderByWithRelationInput
   }
@@ -3397,6 +3421,7 @@ export namespace Prisma {
     mediaName?: StringFilter<"Connection"> | string
     accessToken?: StringFilter<"Connection"> | string
     expiresIn?: IntFilter<"Connection"> | number
+    refreshToken?: StringNullableFilter<"Connection"> | string | null
     userId?: IntFilter<"Connection"> | number
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id" | "userId_mediaName">
@@ -3406,6 +3431,7 @@ export namespace Prisma {
     mediaName?: SortOrder
     accessToken?: SortOrder
     expiresIn?: SortOrder
+    refreshToken?: SortOrderInput | SortOrder
     userId?: SortOrder
     _count?: ConnectionCountOrderByAggregateInput
     _avg?: ConnectionAvgOrderByAggregateInput
@@ -3422,6 +3448,7 @@ export namespace Prisma {
     mediaName?: StringWithAggregatesFilter<"Connection"> | string
     accessToken?: StringWithAggregatesFilter<"Connection"> | string
     expiresIn?: IntWithAggregatesFilter<"Connection"> | number
+    refreshToken?: StringNullableWithAggregatesFilter<"Connection"> | string | null
     userId?: IntWithAggregatesFilter<"Connection"> | number
   }
 
@@ -3488,6 +3515,7 @@ export namespace Prisma {
     mediaName: string
     accessToken: string
     expiresIn: number
+    refreshToken?: string | null
     user: UserCreateNestedOneWithoutConnectionsInput
   }
 
@@ -3496,6 +3524,7 @@ export namespace Prisma {
     mediaName: string
     accessToken: string
     expiresIn: number
+    refreshToken?: string | null
     userId: number
   }
 
@@ -3503,6 +3532,7 @@ export namespace Prisma {
     mediaName?: StringFieldUpdateOperationsInput | string
     accessToken?: StringFieldUpdateOperationsInput | string
     expiresIn?: IntFieldUpdateOperationsInput | number
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     user?: UserUpdateOneRequiredWithoutConnectionsNestedInput
   }
 
@@ -3511,6 +3541,7 @@ export namespace Prisma {
     mediaName?: StringFieldUpdateOperationsInput | string
     accessToken?: StringFieldUpdateOperationsInput | string
     expiresIn?: IntFieldUpdateOperationsInput | number
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     userId?: IntFieldUpdateOperationsInput | number
   }
 
@@ -3519,6 +3550,7 @@ export namespace Prisma {
     mediaName: string
     accessToken: string
     expiresIn: number
+    refreshToken?: string | null
     userId: number
   }
 
@@ -3526,6 +3558,7 @@ export namespace Prisma {
     mediaName?: StringFieldUpdateOperationsInput | string
     accessToken?: StringFieldUpdateOperationsInput | string
     expiresIn?: IntFieldUpdateOperationsInput | number
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ConnectionUncheckedUpdateManyInput = {
@@ -3533,6 +3566,7 @@ export namespace Prisma {
     mediaName?: StringFieldUpdateOperationsInput | string
     accessToken?: StringFieldUpdateOperationsInput | string
     expiresIn?: IntFieldUpdateOperationsInput | number
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     userId?: IntFieldUpdateOperationsInput | number
   }
 
@@ -3663,9 +3697,29 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
   export type UserScalarRelationFilter = {
     is?: UserWhereInput
     isNot?: UserWhereInput
+  }
+
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
   }
 
   export type ConnectionUserIdMediaNameCompoundUniqueInput = {
@@ -3678,6 +3732,7 @@ export namespace Prisma {
     mediaName?: SortOrder
     accessToken?: SortOrder
     expiresIn?: SortOrder
+    refreshToken?: SortOrder
     userId?: SortOrder
   }
 
@@ -3692,6 +3747,7 @@ export namespace Prisma {
     mediaName?: SortOrder
     accessToken?: SortOrder
     expiresIn?: SortOrder
+    refreshToken?: SortOrder
     userId?: SortOrder
   }
 
@@ -3700,6 +3756,7 @@ export namespace Prisma {
     mediaName?: SortOrder
     accessToken?: SortOrder
     expiresIn?: SortOrder
+    refreshToken?: SortOrder
     userId?: SortOrder
   }
 
@@ -3707,6 +3764,24 @@ export namespace Prisma {
     id?: SortOrder
     expiresIn?: SortOrder
     userId?: SortOrder
+  }
+
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type ConnectionCreateNestedManyWithoutUserInput = {
@@ -3771,6 +3846,10 @@ export namespace Prisma {
     create?: XOR<UserCreateWithoutConnectionsInput, UserUncheckedCreateWithoutConnectionsInput>
     connectOrCreate?: UserCreateOrConnectWithoutConnectionsInput
     connect?: UserWhereUniqueInput
+  }
+
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
   }
 
   export type UserUpdateOneRequiredWithoutConnectionsNestedInput = {
@@ -3875,11 +3954,54 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type NestedStringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
   export type ConnectionCreateWithoutUserInput = {
     id?: number
     mediaName: string
     accessToken: string
     expiresIn: number
+    refreshToken?: string | null
   }
 
   export type ConnectionUncheckedCreateWithoutUserInput = {
@@ -3887,6 +4009,7 @@ export namespace Prisma {
     mediaName: string
     accessToken: string
     expiresIn: number
+    refreshToken?: string | null
   }
 
   export type ConnectionCreateOrConnectWithoutUserInput = {
@@ -3923,6 +4046,7 @@ export namespace Prisma {
     mediaName?: StringFilter<"Connection"> | string
     accessToken?: StringFilter<"Connection"> | string
     expiresIn?: IntFilter<"Connection"> | number
+    refreshToken?: StringNullableFilter<"Connection"> | string | null
     userId?: IntFilter<"Connection"> | number
   }
 
@@ -3978,12 +4102,14 @@ export namespace Prisma {
     mediaName: string
     accessToken: string
     expiresIn: number
+    refreshToken?: string | null
   }
 
   export type ConnectionUpdateWithoutUserInput = {
     mediaName?: StringFieldUpdateOperationsInput | string
     accessToken?: StringFieldUpdateOperationsInput | string
     expiresIn?: IntFieldUpdateOperationsInput | number
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ConnectionUncheckedUpdateWithoutUserInput = {
@@ -3991,6 +4117,7 @@ export namespace Prisma {
     mediaName?: StringFieldUpdateOperationsInput | string
     accessToken?: StringFieldUpdateOperationsInput | string
     expiresIn?: IntFieldUpdateOperationsInput | number
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ConnectionUncheckedUpdateManyWithoutUserInput = {
@@ -3998,6 +4125,7 @@ export namespace Prisma {
     mediaName?: StringFieldUpdateOperationsInput | string
     accessToken?: StringFieldUpdateOperationsInput | string
     expiresIn?: IntFieldUpdateOperationsInput | number
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
 

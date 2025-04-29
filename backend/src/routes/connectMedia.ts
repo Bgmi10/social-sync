@@ -10,6 +10,7 @@ export const connectMedia = Router();
 connectMedia.post("/connect-media", validator(collectionSchema), async (req: express.Request, res: express.Response) => {
     //@ts-ignore
    const { id } = req.user;
+   
    try {
         const response = await prisma.connection.upsert({
             where: { userId_mediaName: {
@@ -20,11 +21,13 @@ connectMedia.post("/connect-media", validator(collectionSchema), async (req: exp
              accessToken: req.body.access_token,
              expiresIn: req.body.expires_in,
              mediaName: req.body.mediaName,
-             userId: id
+             userId: id,
+             refreshToken: req.body.refresh_token 
             },
             update: {
              accessToken: req.body.access_token,
              expiresIn: req.body.expires_in,
+             refreshToken: req.body.refresh_token
             }
         });
 

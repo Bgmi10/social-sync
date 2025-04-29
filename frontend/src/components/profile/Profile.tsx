@@ -4,6 +4,7 @@ import { mockPosts } from './constants';
 import { useAuth } from '../../contexts/AuthProvider';
 import { fbLogin } from '../../services/fbLogin';
 import { baseUrl } from '../../utils/constants';
+import { ytLogin } from '../../services/ytLogin';
 
 export default function Profile() {
   const { user } = useAuth();
@@ -18,7 +19,7 @@ export default function Profile() {
    const id = user?.connections?.map((item: any)=> {
     return item.mediaName === platform ? item.id : platform
    });
-   const stringId = id.join("");
+   const stringId = id?.join("");
    return stringId
   }
 
@@ -28,7 +29,7 @@ export default function Profile() {
     authUrl: '/api/auth/instagram' },
     { id: 'twitter', name: 'X (Twitter)', icon: 'https://abs.twimg.com/favicons/twitter.3.ico', connected: false, authUrl: '/api/auth/twitter' },
     { id: 'facebook', name: 'Facebook', icon: `data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' style='fill:none;' viewBox='0 0 500 501'%3e%3cpath style='fill:%230866FF;' d='M500 250.199C500 112.099 388.1 .199219 250 .199219C111.9 .199219 0 112.099 0 250.199C0 367.399 80.7 465.799 189.6 492.799V326.599H138V250.199H189.6V217.299C189.6 132.199 228.1 92.7992 311.6 92.7992C327.4 92.7992 354.8 95.8992 365.9 98.9992V168.299C360 167.699 349.8 167.399 337 167.399C296 167.399 280.2 182.899 280.2 223.299V250.299H361.9L347.9 326.699H280.3V498.499C404.1 483.499 500 378.099 500 250.199Z'/%3e%3cpath d='M347.9 326.599L361.9 250.199H280.2V223.199C280.2 182.799 296 167.299 337 167.299C349.7 167.299 360 167.599 365.9 168.199V98.9988C354.7 95.8988 327.4 92.7988 311.6 92.7988C228.1 92.7988 189.6 132.199 189.6 217.299V250.199H138V326.599H189.6V492.799C208.9 497.599 229.2 500.199 250 500.199C260.3 500.199 270.4 499.599 280.3 498.399V326.599H347.9Z' style='fill:white;'/%3e%3c/svg%3e`, connected: false, authUrl: fbLogin },
-    { id: 'youtube', name: 'YouTube', icon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFwAAABcCAMAAADUMSJqAAAAZlBMVEX2HA3////2AAD6ko38r6v/9/b2FQD+6un90tD2FwT+6Ob8zcv8wb/7oZz8vLj5hYH4VEz3Mib6mJL5bWb4YFn+7+32KBz3SkD92dn5amH4UEX5jYj6f3j3Ny35gXz5dnD8tbH3Qjgj3VKrAAABv0lEQVRoge3Y65KCMAwF4LbScpeLgCC66vu/5AZ2GQVhnKE5/5oH+ObYYiaNkMASDne4wx2Ox6MgTtLDrkqTOIi2cX3M8lBZVJhnR72Ka68wygirIqDw9Cf+yG3lyc8fS7w0LPTIm3KG+yfFRQ+lTv4bXrHapFcvPGO2Sc8mPGU77leZ9A+vw5AfD8N6xHkvcyp1GvCgAQSn6E1AeA8JTtF7Kfwz4DqHMmdftKDgFL0VBxx+EB3oVOhcOnGBfCtDhRdRfE+wV/9OC5Ebhfp1qpT19QbilUcdqO0Fpkd4Y2turwqQ/h8nPmv42/6ESxmwp3/DaWbqeNPPcEr/Yxj5BS510CnDdThLfEh/5zqcFVzKuOMZz1ZxSl/t7zlfcSmTu336TZwm7pvtxW7jNKnZRt/G/bJAJff7m/3nvo63pfUrZAuPsoKng33guu3YmuMST+6MnWuOx7w99w2vjzlfQ1zgj4rvxTfHa6/haYSfeJQ+IZMLDUW6PwNSj9VU+/+M0EEUOkJDh3/oswX64II+FaGPXOzzHLpYwK5EoMsc7BoKu0DDrv6gS0uJXbdiF8USuuIeC7ecZy+HO9zhDkfUL6KTHlj3cT86AAAAAElFTkSuQmCC', connected: false, authUrl: '/api/auth/youtube' },   
+    { id: 'youtube', name: 'YouTube', icon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFwAAABcCAMAAADUMSJqAAAAZlBMVEX2HA3////2AAD6ko38r6v/9/b2FQD+6un90tD2FwT+6Ob8zcv8wb/7oZz8vLj5hYH4VEz3Mib6mJL5bWb4YFn+7+32KBz3SkD92dn5amH4UEX5jYj6f3j3Ny35gXz5dnD8tbH3Qjgj3VKrAAABv0lEQVRoge3Y65KCMAwF4LbScpeLgCC66vu/5AZ2GQVhnKE5/5oH+ObYYiaNkMASDne4wx2Ox6MgTtLDrkqTOIi2cX3M8lBZVJhnR72Ka68wygirIqDw9Cf+yG3lyc8fS7w0LPTIm3KG+yfFRQ+lTv4bXrHapFcvPGO2Sc8mPGU77leZ9A+vw5AfD8N6xHkvcyp1GvCgAQSn6E1AeA8JTtF7Kfwz4DqHMmdftKDgFL0VBxx+EB3oVOhcOnGBfCtDhRdRfE+wV/9OC5Ebhfp1qpT19QbilUcdqO0Fpkd4Y2turwqQ/h8nPmv42/6ESxmwp3/DaWbqeNPPcEr/Yxj5BS510CnDdThLfEh/5zqcFVzKuOMZz1ZxSl/t7zlfcSmTu336TZwm7pvtxW7jNKnZRt/G/bJAJff7m/3nvo63pfUrZAuPsoKng33guu3YmuMST+6MnWuOx7w99w2vjzlfQ1zgj4rvxTfHa6/haYSfeJQ+IZMLDUW6PwNSj9VU+/+M0EEUOkJDh3/oswX64II+FaGPXOzzHLpYwK5EoMsc7BoKu0DDrv6gS0uJXbdiF8USuuIeC7ecZy+HO9zhDkfUL6KTHlj3cT86AAAAAElFTkSuQmCC', connected: false, authUrl: ytLogin },   
   ];
 
   const [connections, setConnections] = useState(() => 

@@ -12,12 +12,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.auth = void 0;
 const express_1 = require("express");
 const authSchema_1 = require("../validator/authSchema");
-const Validator_1 = require("../middlewares/Validator");
+const validator_1 = require("../middlewares/validator");
 const prisma_1 = require("../prisma/prisma");
 const helper_1 = require("../utils/helper");
 exports.auth = (0, express_1.Router)();
 //@ts-ignore
-exports.auth.post("/signup", (0, Validator_1.validator)(authSchema_1.signupSchema), (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+exports.auth.post("/signup", (0, validator_1.validator)(authSchema_1.signupSchema), (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const isUserExist = yield prisma_1.prisma.user.findUnique({
         where: { email: req.body.email }
     });
@@ -54,7 +54,7 @@ exports.auth.post("/signup", (0, Validator_1.validator)(authSchema_1.signupSchem
     }
 }));
 //@ts-ignore
-exports.auth.post("/login", (0, Validator_1.validator)(authSchema_1.loginSchema), (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+exports.auth.post("/login", (0, validator_1.validator)(authSchema_1.loginSchema), (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const existUser = yield prisma_1.prisma.user.findUnique({
             where: { email: req.body.email }

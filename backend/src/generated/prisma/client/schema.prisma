@@ -18,12 +18,13 @@ model User {
 }
 
 model Connection {
-  id          Int    @unique @default(autoincrement())
-  mediaName   String
-  accessToken String
-  expiresIn   Int
-  userId      Int
-  user        User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id           Int     @unique @default(autoincrement())
+  mediaName    String
+  accessToken  String
+  expiresIn    Int
+  refreshToken String?
+  userId       Int
+  user         User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([userId, mediaName])
 }

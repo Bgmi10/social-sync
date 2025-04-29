@@ -8,8 +8,6 @@ dotenv.config({ path: "../.env" });
 const clientId = process.env.FB_CLIENT;
 const clientSecret = process.env.FB_SECRET;
 
-console.log(clientId)
-
 fb.post("/exchangecodefortoken", async (req: express.Request, res: express.Response) => {
     const { token } = req.body; // Keep it secret, backend ideally!
     const redirectUri = `http://localhost:5173/facebook/callback`;

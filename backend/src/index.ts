@@ -7,8 +7,10 @@ import { user } from "./routes/user";
 import { authMiddleware } from "./middlewares/authMiddleware";
 import cookieParser from "cookie-parser";
 import { webhook } from "./routes/webhook";
-import { fb } from "./routes/exchangecodefortoken/fb";
 import { connectMedia } from "./routes/connectMedia";
+import { socialMediaRouter } from "./routes/socialMediaRouter";
+import { fb } from "./routes/exchangecodefortoken/fb";
+import yt from "./routes/exchangecodefortoken/yt";
 
 dotenv.config({ path: "../.env" });
 const port = process.env.PORT;
@@ -27,6 +29,7 @@ app.use("/api/v1/auth", auth);
 app.use("/api/v1", authMiddleware, user);
 app.use("/api/v1", webhook);
 app.use("/api/v1/fb", authMiddleware, fb);
+app.use("/api/v1/yt", authMiddleware, yt);
 app.use("/api/v1", authMiddleware, connectMedia);
 
 app.listen(port, () => {

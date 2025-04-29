@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.validPass = exports.signToken = exports.hashPass = exports.sendResponse = void 0;
+exports.verifyToken = exports.validPass = exports.signToken = exports.hashPass = exports.sendResponse = void 0;
 const bcrypt_1 = require("bcrypt");
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const dotenv_1 = __importDefault(require("dotenv"));
@@ -36,3 +36,8 @@ const validPass = (password, encryptPass) => __awaiter(void 0, void 0, void 0, f
     return isValid;
 });
 exports.validPass = validPass;
+const verifyToken = (token) => {
+    const isValidToken = jsonwebtoken_1.default.verify(token, process.env.JWT_SECRET);
+    return isValidToken;
+};
+exports.verifyToken = verifyToken;

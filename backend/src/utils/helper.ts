@@ -27,3 +27,24 @@ export const verifyToken = (token: string) => {
   const isValidToken = jwt.verify(token, process.env.JWT_SECRET as string);
   return isValidToken;
 }
+
+export async function ytRefreshToken(refreshToken: string) {
+  const tokenUrl = 'https://oauth2.googleapis.com/token';
+  const params = new URLSearchParams({
+    client_id: process.env.YT_CLIENT as string,
+    client_secret: process.env.YT_SECRET as string,
+    refresh_token: refreshToken,
+    grant_type: 'refresh_token'
+  });
+
+  const response = await fetch(tokenUrl, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    body: params
+  });
+
+  const data = await response.json();
+  return data; // Contains new access_token, typically with same 1hr expiration
+}

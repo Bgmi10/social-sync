@@ -130,6 +130,7 @@ exports.Prisma.ConnectionScalarFieldEnum = {
   mediaName: 'mediaName',
   accessToken: 'accessToken',
   expiresIn: 'expiresIn',
+  refreshToken: 'refreshToken',
   userId: 'userId'
 };
 
@@ -141,6 +142,11 @@ exports.Prisma.SortOrder = {
 exports.Prisma.QueryMode = {
   default: 'default',
   insensitive: 'insensitive'
+};
+
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
 };
 
 
