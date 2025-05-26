@@ -12,10 +12,11 @@ import { socialMediaRouter } from "./routes/socialMediaRouter";
 import { fb } from "./routes/exchangecodefortoken/fb";
 import yt from "./routes/exchangecodefortoken/yt";
 
-dotenv.config({ path: "../.env" });
+dotenv.config();
 const port = process.env.PORT;
 const app = express();
 
+console.log(process.env.PORT)
 app.use(cors({
     origin: ["http://localhost:5173", "http://localhost:5174"],
     credentials: true

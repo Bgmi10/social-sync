@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { baseUrl } from "../../utils/constants";
 import { useNavigate } from "react-router-dom";
-import { ArrowRightIcon, XIcon, Lock, Mail, User } from 'lucide-react';
+import { ArrowRightIcon, Lock, Mail, User } from 'lucide-react';
 
 export default function Auth() {
     const [isSignupForm, setIsSignForm] = useState(false);

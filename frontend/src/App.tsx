@@ -3,6 +3,7 @@ import Profile from "./components/profile/Profile"
 import Auth from "./components/auth/Auth"
 import Fb from "./components/callbacks/Fb"
 import { Yt } from "./components/callbacks/Yt"
+import X from "./components/callbacks/X"
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
             <Route element={<Auth />} path="/auth" />
             <Route element={<Fb />} path="/facebook/callback" />
             <Route element={<Yt />} path="/youtube/callback" />
+            <Route element={<X />} path="/x/callback" />
          </Routes>
       </Router>
      </div> 
